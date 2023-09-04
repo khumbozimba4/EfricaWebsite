@@ -1,0 +1,14 @@
+
+
+    public function toSearchableArray()
+    {
+        return [
+          foreach($fillableAttributes as $attribute)
+            if($attribute != 'created_at' && $attribute != 'updated_at')
+            '{{ $attribute }}' => $this->{{ $attribute }},
+            endif
+            endforeach
+        ];
+    }
+
+  

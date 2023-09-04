@@ -1,0 +1,1280 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Efrica website  OpenApi  Documentation",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "khumbozimba4@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api/v1"
+        }
+    ],
+    "paths": {
+        "/article/getAllArticles": {
+            "get": {
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Get list of articles",
+                "description": "Returns list of articles",
+                "operationId": "getAllArticles",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ArticleResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/article/addArticle": {
+            "post": {
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Store new article",
+                "description": "Returns article data",
+                "operationId": "storeArticle",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreArticleRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/article/{id}/getArticleById": {
+            "get": {
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Get article information",
+                "description": "Returns article data",
+                "operationId": "getArticleById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Article id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/article/{id}/updateArticleById": {
+            "put": {
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Update existing article",
+                "description": "Returns updated article data",
+                "operationId": "updateArticle",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Article id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateArticleRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/article/{id}/deleteArticleById": {
+            "delete": {
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Delete existing article",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteArticle",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Article id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/service/getAllServices": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Get list of services",
+                "description": "Returns list of services",
+                "operationId": "getAllServices",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ServiceResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/service/addService": {
+            "post": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Store new service",
+                "description": "Returns service data",
+                "operationId": "storeService",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreServiceRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/service/{id}/getServiceById": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Get service information",
+                "description": "Returns service data",
+                "operationId": "getServiceById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Service id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/service/{id}/updateServiceById": {
+            "put": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Update existing service",
+                "description": "Returns updated service data",
+                "operationId": "updateService",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Service id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateServiceRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Service"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/service/{id}/deleteServiceById": {
+            "delete": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Delete existing service",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteService",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Service id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/setting/getAllSettings": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Get list of settings",
+                "description": "Returns list of settings",
+                "operationId": "getAllSettings",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/setting/addSetting": {
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Store new setting",
+                "description": "Returns setting data",
+                "operationId": "storeSetting",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreSettingRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Setting"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/setting/{id}/getSettingById": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Get setting information",
+                "description": "Returns setting data",
+                "operationId": "getSettingById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Setting id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Setting"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/setting/{id}/updateSettingById": {
+            "put": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Update existing setting",
+                "description": "Returns updated setting data",
+                "operationId": "updateSetting",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Setting id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateSettingRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Setting"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/setting/{id}/deleteSettingById": {
+            "delete": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Delete existing setting",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteSetting",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Setting id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/user/getAllUsers": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get list of users",
+                "description": "Returns list of users",
+                "operationId": "getAllUsers",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResource"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/user/addUser": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Store new user",
+                "description": "Returns user data",
+                "operationId": "storeUser",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreUserRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/user/{id}/getUserById": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get user information",
+                "description": "Returns user data",
+                "operationId": "getUserById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/user/{id}/updateUserById": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update existing user",
+                "description": "Returns updated user data",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateUserRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/user/{id}/deleteUserById": {
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete existing user",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Article": {
+                "title": "Article",
+                "description": "Article model",
+                "properties": {
+                    "title": {
+                        "title": "title",
+                        "description": "title of the Article model",
+                        "example": ""
+                    },
+                    "photo_url": {
+                        "title": "photo_url",
+                        "description": "photo_url of the Article model",
+                        "example": ""
+                    },
+                    "content": {
+                        "title": "content",
+                        "description": "content of the Article model",
+                        "example": ""
+                    },
+                    "published_at": {
+                        "title": "published_at",
+                        "description": "published_at of the Article model",
+                        "example": ""
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Article"
+                }
+            },
+            "Service": {
+                "title": "Service",
+                "description": "Service model",
+                "properties": {
+                    "title": {
+                        "title": "title",
+                        "description": "title of the Service model",
+                        "example": ""
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "description of the Service model",
+                        "example": ""
+                    },
+                    "icon": {
+                        "title": "icon",
+                        "description": "icon of the Service model",
+                        "example": ""
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Service"
+                }
+            },
+            "Setting": {
+                "title": "Setting",
+                "description": "Setting model",
+                "properties": {
+                    "key": {
+                        "title": "key",
+                        "description": "key of the Setting model",
+                        "example": ""
+                    },
+                    "value": {
+                        "title": "value",
+                        "description": "value of the Setting model",
+                        "example": ""
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Setting"
+                }
+            },
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "name of the User model",
+                        "example": ""
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email of the User model",
+                        "example": ""
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "password of the User model",
+                        "example": ""
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            },
+            "ArticleResource": {
+                "title": "ArticleResource",
+                "description": "Article resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Article"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ArticleResource"
+                }
+            },
+            "ServiceResource": {
+                "title": "ServiceResource",
+                "description": "Service resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Service"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ServiceResource"
+                }
+            },
+            "SettingResource": {
+                "title": "SettingResource",
+                "description": "Setting resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Setting"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "SettingResource"
+                }
+            },
+            "UserResource": {
+                "title": "UserResource",
+                "description": "User resource",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/User"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UserResource"
+                }
+            },
+            "StoreArticleRequest": {
+                "title": "Store Article request",
+                "description": "Store Article request body data",
+                "required": [
+                    "title",
+                    "photo_url",
+                    "content",
+                    "published_at"
+                ],
+                "properties": {
+                    "title": {
+                        "title": "title",
+                        "description": "title of the new Article",
+                        "type": "string",
+                        "example": "Your example value here"
+                    },
+                    "photo_url": {
+                        "title": "photo_url",
+                        "description": "photo_url of the new Article",
+                        "type": "string",
+                        "example": "Your example value here"
+                    },
+                    "content": {
+                        "title": "content",
+                        "description": "content of the new Article",
+                        "type": "string",
+                        "example": "Your example value here"
+                    },
+                    "published_at": {
+                        "title": "published_at",
+                        "description": "published_at of the new Article",
+                        "type": "string",
+                        "example": "Your example value here"
+                    }
+                },
+                "type": "object"
+            },
+            "StoreServiceRequest": {
+                "title": "Store Service request",
+                "description": "Store Service request body data",
+                "required": [
+                    "title",
+                    "description",
+                    "icon"
+                ],
+                "properties": {
+                    "title": {
+                        "title": "title",
+                        "description": "title of the new Service",
+                        "type": "string",
+                        "example": "Your example value here"
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "description of the new Service",
+                        "type": "string",
+                        "example": "Your example value here"
+                    },
+                    "icon": {
+                        "title": "icon",
+                        "description": "icon of the new Service",
+                        "type": "string",
+                        "example": "Your example value here"
+                    }
+                },
+                "type": "object"
+            },
+            "StoreSettingRequest": {
+                "title": "Store Setting request",
+                "description": "Store Setting request body data",
+                "required": [
+                    "key",
+                    "value"
+                ],
+                "properties": {
+                    "key": {
+                        "title": "key",
+                        "description": "key of the new Setting",
+                        "type": "string",
+                        "example": "Your example value here"
+                    },
+                    "value": {
+                        "title": "value",
+                        "description": "value of the new Setting",
+                        "type": "string",
+                        "example": "Your example value here"
+                    }
+                },
+                "type": "object"
+            },
+            "StoreUserRequest": {
+                "title": "Store User request",
+                "description": "Store User request body data",
+                "required": [
+                    "name",
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "name of the new User",
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email of the new User",
+                        "type": "string",
+                        "example": "johndoe@example.com"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "password of the new User",
+                        "type": "string",
+                        "example": "Your example value here"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateArticleRequest": {
+                "title": "UpdateArticle request",
+                "description": "UpdateArticle request body data",
+                "required": [
+                    "title",
+                    "photo_url",
+                    "content",
+                    "published_at"
+                ],
+                "properties": {
+                    "title": {
+                        "title": "title",
+                        "description": "title of the new Article",
+                        "type": "string",
+                        "example": "Your example value here"
+                    },
+                    "photo_url": {
+                        "title": "photo_url",
+                        "description": "photo_url of the new Article",
+                        "type": "string",
+                        "example": "Your example value here"
+                    },
+                    "content": {
+                        "title": "content",
+                        "description": "content of the new Article",
+                        "type": "string",
+                        "example": "Your example value here"
+                    },
+                    "published_at": {
+                        "title": "published_at",
+                        "description": "published_at of the new Article",
+                        "type": "string",
+                        "example": "Your example value here"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateServiceRequest": {
+                "title": "UpdateService request",
+                "description": "UpdateService request body data",
+                "required": [
+                    "title",
+                    "description",
+                    "icon"
+                ],
+                "properties": {
+                    "title": {
+                        "title": "title",
+                        "description": "title of the new Service",
+                        "type": "string",
+                        "example": "Your example value here"
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "description of the new Service",
+                        "type": "string",
+                        "example": "Your example value here"
+                    },
+                    "icon": {
+                        "title": "icon",
+                        "description": "icon of the new Service",
+                        "type": "string",
+                        "example": "Your example value here"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateSettingRequest": {
+                "title": "UpdateSetting request",
+                "description": "UpdateSetting request body data",
+                "required": [
+                    "key",
+                    "value"
+                ],
+                "properties": {
+                    "key": {
+                        "title": "key",
+                        "description": "key of the new Setting",
+                        "type": "string",
+                        "example": "Your example value here"
+                    },
+                    "value": {
+                        "title": "value",
+                        "description": "value of the new Setting",
+                        "type": "string",
+                        "example": "Your example value here"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateUserRequest": {
+                "title": "UpdateUser request",
+                "description": "UpdateUser request body data",
+                "required": [
+                    "name",
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "name of the new User",
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email of the new User",
+                        "type": "string",
+                        "example": "johndoe@example.com"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "password of the new User",
+                        "type": "string",
+                        "example": "Your example value here"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Articles",
+            "description": "API Endpoints of Articles"
+        },
+        {
+            "name": "Services",
+            "description": "API Endpoints of Services"
+        },
+        {
+            "name": "Settings",
+            "description": "API Endpoints of Settings"
+        },
+        {
+            "name": "Users",
+            "description": "API Endpoints of Users"
+        }
+    ]
+}
